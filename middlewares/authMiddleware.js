@@ -6,7 +6,7 @@ export const requireSignIn = async (req, res, next) => {
   try {
     const decode = JWT.verify(
       req.headers.authorization,
-      "abodh123"
+      process.env.JWT_SECRET
     );
     console.log(req);
     console.log(decode);
@@ -14,11 +14,6 @@ export const requireSignIn = async (req, res, next) => {
     next()
   } catch (error) {
     console.log(error);
-
-    res.send({
-      "pramod":"mae pagal hu"
-    })
-
   }
 };
 
@@ -31,7 +26,8 @@ export const isAdmin = async (req, res, next) => {
         success: false,
         message: "UnAuthorized Access",
       });
-    } else {
+    } 
+    else {
       next();
     }
   } catch (error) {

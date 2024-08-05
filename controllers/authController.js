@@ -54,7 +54,7 @@ export const registerController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Errro in Registeration",
+      message: "Error in Registeration",
       error,
     });
   }
@@ -87,7 +87,7 @@ export const loginController = async (req, res) => {
       });
     }
     //token
-    const token = await JWT.sign({ _id: user._id }, "abodh123", {
+    const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
     res.status(200).send({

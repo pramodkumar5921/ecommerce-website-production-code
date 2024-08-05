@@ -12,9 +12,9 @@ dotenv.config();
 //payment gateway
 var gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,
-  merchantId:"7jzbwmzsq7p2b7m3",
-  publicKey: "cgt36dcv3k88s9h5",
-  privateKey: "ba6e864a35aa78eba4263b9ef30694ce",
+  merchantId:process.env.BRAINTREE_MERCHANT_ID,
+  publicKey:process.env.BRAINTREE_PUBLIC_KEY,
+  privateKey:process.env.BRAINTREE_PRIVATE_KEY,
 });
 
 export const createProductController = async (req, res) => {
